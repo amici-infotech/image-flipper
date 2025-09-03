@@ -1,0 +1,64 @@
+<?php
+use Magento\Catalog\Model\Product;
+use Magento\Framework\Escaper;
+use Magento\Swatches\Block\Product\Renderer\Listing\Configurable;
+use Magento\Swatches\ViewModel\Product\Renderer\Configurable as ConfigurableViewModel;
+use Amici\ImageFlipper\ViewModel\ConfigurableFlipper;
+
+/**
+ * @var $block Configurable;
+ * @var $product Product;
+ * @var $configurableFlipper ConfigurableFlipper;
+ * @var $configurableViewModel ConfigurableViewModel;
+ * @var $escaper Escaper;
+ */
+$product = $block->getProduct();
+if ($product && $product->isAvailable()):
+    $productId = $product->getId();
+    $configurableViewModel = $block->getConfigurableViewModel();
+    $configurableFlipper = $block->getViewModel();
+    ?>
+    <div class="swatch-opt-<?= $escaper->escapeHtmlAttr($productId) ?>"
+         data-role="swatch-option-<?= $escaper->escapeHtmlAttr($productId) ?>">
+    </div>
+    <script type="text/x-magento-init">
+        {
+            "[data-role=swatch-option-<?= $escaper->escapeJs($productId) ?>]": {
+                "Magento_Swatches/js/swatch-renderer": {
+                    "selectorProduct": ".product-item-details",
+                    "onlySwatches": true,
+                    "enableControlLabel": false,
+                    "numberToShow": <?= $escaper->escapeJs($block->getNumberSwatchesPerProduct()) ?>,
+                    "jsonConfig": <?= /* @noEscape */ $block->getJsonConfig() ?>,
+                    "jsonSwatchConfig": <?= /* @noEscape */ $block->getJsonSwatchConfig() ?>,
+                    "mediaCallback": "<?= $escaper->escapeUrl($block->getMediaCallback()) ?>",
+                    "jsonSwatchImageSizeConfig": <?= /* @noEscape */ $block->getJsonSwatchSizeConfig() ?>,
+                    "showTooltip": <?= $escaper->escapeJs($configurableViewModel->getShowSwatchTooltip()) ?>,
+                    "imageFlipper": <?= /* @noEscape */ $configurableFlipper->getImageFlipper($block->getProduct()) ?>,
+                    "productId": <?= $escaper->escapeHtmlAttr($productId) ?>
+                }
+            }
+        }
+    </script>
+    <script>
+        require(["jquery"], function (jQuery) {
+            jQuery(".product-options-wrapper select[id^='attribute']").last().on('change', function () {
+                setTimeout(function () {
+                    simpleId = jQuery("input[name=selected_configurable_option]").val();
+                }, 500);
+            });
+        });
+    </script>
+    <script type="text/x-magento-init">
+        {
+            "[data-role=priceBox][data-price-box=product-id-<?= $escaper->escapeJs($productId) ?>]": {
+                "priceBox": {
+                    "priceConfig": {
+                        "priceFormat": <?= /* @noEscape */ $block->getPriceFormatJson() ?>,
+                        "prices": <?= /* @noEscape */ $block->getPricesJson() ?>
+                    }
+                }
+            }
+        }
+    </script>
+<?php endif; ?>

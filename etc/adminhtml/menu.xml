@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Amici_ImageFlipper::image_flipper"
+             title="Product Image Flipper"
+             module="Amici_ImageFlipper"
+             sortOrder="30"
+             resource="Amici_ImageFlipper::image_flipper"
+             parent="Amici_Core::core"/>
+        <add id="Amici_ImageFlipper::image_flipper_config"
+             title="Configuration"
+             module="Amici_ImageFlipper"
+             sortOrder="40"
+             parent="Amici_ImageFlipper::image_flipper"
+             action="adminhtml/system_config/edit/section/image_flipper"
+             resource="Amici_ImageFlipper::image_flipper_config"/>
+    </menu>
+</config>

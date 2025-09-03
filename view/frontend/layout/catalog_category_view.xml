@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name='category.product.type.details.renderers.configurable'>
+            <action method='setTemplate' ifconfig="catalog/frontend/show_swatches_in_product_list">
+                <argument name='template' xsi:type='string'>Amici_ImageFlipper::product/listing/renderer.phtml
+                </argument>
+            </action>
+        </referenceBlock>
+    </body>
+</page>

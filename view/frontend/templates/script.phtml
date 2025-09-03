@@ -1,0 +1,23 @@
+<?php
+use Magento\Framework\View\Element\Template;
+use Magento\Framework\Escaper;
+
+/**
+ * @var $block Template;
+ * @var $escaper Escaper;
+ */
+$viewModel = $block->getData('viewModelConfiguration');
+if ($viewModel->getModuleEnable()): ?>
+   <script>
+       requirejs([
+          'jquery',
+          'amici_flipper'
+       ], function($) {
+             var widget = $(this).amici_flipper({
+             "mainclass":"<?= $escaper->escapeJs($viewModel->getMainClass()) ?>",
+             "imageclass":"<?= $escaper->escapeJs($viewModel->getImageClass()) ?>",
+             "imageflip":"<?= $escaper->escapeJs($viewModel->getImageFlipStyle()) ?>"
+           });
+       });
+   </script>
+<?php endif; ?>
