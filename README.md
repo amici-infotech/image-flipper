@@ -13,7 +13,7 @@
     4. php bin/magento setup:static-content:deploy
 
 ### Documentation
-Visit the [Delete order page](https://github.com/amici-infotech/image-flipper) for all documentation, guides, pricing and developer resources.
+Visit the [Image Flipper page](https://github.com/amici-infotech/image-flipper) for all documentation, guides, pricing and developer resources.
 
 ### Support
 Get in touch with us via the [Amici Infotech Support](https://amiciinfotech.com/contact) or by [creating a Github issue](https://github.com/amici-infotech/image-flipper/issues)
