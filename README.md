@@ -1,16 +1,25 @@
-# Image Flipper by Amici, Image Flipper provides effortless configuration through user-friendly settings
-### Features
-    1. Easy Installation.
-    2. User can enable/disable module from backend.
-    3. Image flip effects: Horizontal, Vertical, Rotate, None.
-    4. Customizable Product container and Image class name for custom themes.
-    5. Multi-store view support.
+# Image Flipper for Magento 2
 
-### Installation
-    1. composer require amici/image-flipper
-    2. php bin/magento setup:upgrade
-    3. php bin/magento setup:di:compile
-    4. php bin/magento setup:static-content:deploy
+Add engaging image flip effects to your product displays with easy configuration and seamless theme integration.
+
+## 🖼️ Features
+
+- **Easy Installation** - Quick setup and integration
+- **Simple Enable/Disable** - Turn module on or off from admin panel
+- **Multiple Flip Effects** - Horizontal, vertical, rotate, and no-effect options
+- **Theme Compatibility** - Customizable container and image class names for custom themes
+- **Multi-store Support** - Different settings for different store views
+- **Seamless Integration** - Works with your existing theme and layout
+
+## 📦 Installation
+
+### Composer Installation
+```bash
+composer require amici/image-flipper
+php bin/magento setup:upgrade
+php bin/magento setup:di:compile
+php bin/magento setup:static-content:deploy
+```
 
 ### Documentation
 Visit the [Image Flipper page](https://github.com/amici-infotech/image-flipper) for all documentation, guides, pricing and developer resources.
